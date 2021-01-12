@@ -8,26 +8,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Table(name = "users")
 @NamedQueries({
-//    @NamedQuery(
-//        name = "getAllEmployees",
-//        query = "SELECT e FROM Employee AS e ORDER BY e.id DESC"
-//    ),
-//    @NamedQuery(
-//        name = "getEmployeesCount",
-//        query = "SELECT COUNT(e) FROM Employee AS e"
-//    ),
-//    @NamedQuery(
-//        name = "checkRegisteredCode",
-//        query = "SELECT COUNT(e) FROM Employee AS e WHERE e.code = :code"
-//    ),
-//    @NamedQuery(
-//        name = "checkLoginCodeAndPassword",
-//        query = "SELECT e FROM Employee AS e WHERE e.delete_flag = 0 AND e.code = :code AND e.password = :pass"
-//    )
+    @NamedQuery(
+        name = "getAllUsers",
+        query = "SELECT u FROM User AS u ORDER BY u.id DESC"
+    ),
+    @NamedQuery(
+        name = "getUsersCount",
+        query = "SELECT COUNT(u) FROM User AS u"
+    ),
+    @NamedQuery(
+        name = "checkRegisteredCode",
+        query = "SELECT COUNT(u) FROM User AS u WHERE u.code = :code"
+    ),
+    @NamedQuery(
+        name = "checkLoginCodeAndPassword",
+        query = "SELECT u FROM User AS u WHERE u.delete_flag = 0 AND u.code = :code AND u.password = :pass"
+    )
 })
 @Entity
 public class User {
