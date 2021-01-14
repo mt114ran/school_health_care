@@ -25,6 +25,14 @@ import javax.persistence.Table;
         name = "getCardsCount",
         query = "SELECT COUNT(c) FROM Card AS c"
     ),
+    @NamedQuery(
+        name = "getMyAllCards",
+        query = "SELECT c FROM Card AS c WHERE c.user = :user ORDER BY c.id DESC"
+    ),
+    @NamedQuery(
+        name = "getMyCardsCount",
+        query = "SELECT COUNT(c) FROM Card AS c WHERE c.user = :user"
+    )
 })
 @Entity
 public class Card{
