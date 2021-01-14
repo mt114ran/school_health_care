@@ -13,12 +13,20 @@
                 <tr>
                     <th>ユーザー番号</th>
                     <th>氏名</th>
+                    <th>アカウント種類</th>
                     <th>操作</th>
                 </tr>
                 <c:forEach var="user" items="${users}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${user.code}" /></td>
                         <td><c:out value="${user.name}" /></td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${user.acc_inf == 0}">先生</c:when>
+                                <c:when test="${user.acc_inf == 1}">生徒</c:when>
+                                <c:otherwise>保護者</c:otherwise>
+                            </c:choose>
+                        </td>
                         <td>
                             <c:choose>
                                 <c:when test="${user.delete_flag == 1}">

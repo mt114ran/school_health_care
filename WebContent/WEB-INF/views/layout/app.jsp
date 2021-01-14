@@ -17,8 +17,8 @@
                     <h1><a href="<c:url value='/' />">SCHOOL HEALTH CARE</a></h1>&nbsp;&emsp;&emsp;
                     <c:if test="${sessionScope.login_user != null}">
                         <c:if test="${sessionScope.login_user.acc_inf == 0}">
-                            <a href="<c:url value='/users/index' />"><i class="fas fa-users"></i> 欠席遅刻管理</a>&nbsp;&emsp;&emsp;
-                            <a href="<c:url value='/users/index' />"><i class="fas fa-users"></i> クラス管理</a>&nbsp;&emsp;&emsp;
+                            <a href="<c:url value='/users/index' />"><i class="fas fa-users"></i> ユーザー管理</a>&nbsp;&emsp;&emsp;
+                            <a href="<c:url value='/cards/index' />"><i class="fas fa-users"></i> カード管理</a>&nbsp;&emsp;&emsp;
                         </c:if>
                         <a href="<c:url value='/users/index' />"><i class="fas fa-clipboard-list"></i> ユーザー管理</a>&nbsp;&emsp;&emsp;
                         <a href="<c:url value='/users/index' />"><i class="fas fa-hands-helping"></i> 生徒管理</a>&nbsp;&emsp;&emsp;

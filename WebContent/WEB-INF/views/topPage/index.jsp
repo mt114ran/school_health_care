@@ -53,6 +53,6 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='/reports/new' />">新規カードの登録</a></p>
+        <p><a href="<c:url value='/cards/new' />">新規カードの登録</a></p>
     </c:param>
 </c:import>
