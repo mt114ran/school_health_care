@@ -84,7 +84,7 @@ public class Card{
         return temperature;
     }
 
-    public void setTempareture(Double temperature) {
+    public void setTemperature(Double temperature) {
         this.temperature = temperature;
     }
 

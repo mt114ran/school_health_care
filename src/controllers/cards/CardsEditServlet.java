@@ -40,7 +40,7 @@ public class CardsEditServlet extends HttpServlet {
 
         User login_user = (User)request.getSession().getAttribute("login_user");
         if(c != null && login_user.getId() == c.getUser().getId()) {
-            request.setAttribute("report", c);
+            request.setAttribute("card", c);
             request.setAttribute("_token", request.getSession().getId());
             request.getSession().setAttribute("card_id", c.getId());
         }

@@ -14,21 +14,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Card;
-import models.User;
 import models.validators.CardValidator;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class ReportsCreateServlet
+ * Servlet implementation class ReportsUpdateServlet
  */
-@WebServlet("/cards/create")
-public class CardsCreateServlet extends HttpServlet {
+@WebServlet("/cards/update")
+public class CardsUpdateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CardsCreateServlet() {
+    public CardsUpdateServlet() {
         super();
     }
 
@@ -40,24 +39,13 @@ public class CardsCreateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Card c = new Card();
+            Card c = em.find(Card.class, (Integer)(request.getSession().getAttribute("card_id")));
 
-            c.setUser((User)request.getSession().getAttribute("login_user"));
-
-            Date card_date = new Date(System.currentTimeMillis());
-            String rd_str = request.getParameter("card_date");
-            if(rd_str != null && !rd_str.equals("")) {
-                card_date = Date.valueOf(request.getParameter("card_date"));
-            }
-
-            c.setCard_date(card_date);
+            c.setCard_date(Date.valueOf(request.getParameter("card_date")));
             c.setTemperature(Double.parseDouble(request.getParameter("temperature")));
             c.setAttendance(Integer.parseInt(request.getParameter("attendance")));
             c.setComment(request.getParameter("comment"));
-
-            Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-            c.setCreated_at(currentTime);
-            c.setUpdated_at(currentTime);
+            c.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 
             List<String> errors = CardValidator.validate(c);
             if(errors.size() > 0) {
@@ -67,14 +55,15 @@ public class CardsCreateServlet extends HttpServlet {
                 request.setAttribute("card", c);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/cards/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/cards/edit.jsp");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
-                em.persist(c);
                 em.getTransaction().commit();
                 em.close();
-                request.getSession().setAttribute("flush", "登録が完了しました。");
+                request.getSession().setAttribute("flush", "更新が完了しました。");
+
+                request.getSession().removeAttribute("card_id");
 
                 response.sendRedirect(request.getContextPath() + "/cards/index");
             }
