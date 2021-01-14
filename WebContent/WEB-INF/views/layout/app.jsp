@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="<c:url value='/css/reset.css' />">
         <link rel="stylesheet" href="<c:url value='/css/style.css' />">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <link rel="icon" type="image/x-icon" href="<c:url value='/image/school_icon.png'/>">
     </head>
     <body>
         <div id="wrapper">
