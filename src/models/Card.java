@@ -41,7 +41,7 @@ public class Card{
     private Date card_date;
 
     @Column(name = "temperature", nullable = false)
-    private Integer temperature;
+    private Double temperature;
 
     @Column(name = "attendance", nullable = false)
     private Integer attendance;
@@ -80,11 +80,11 @@ public class Card{
         this.card_date = card_date;
     }
 
-    public Integer getTemperature() {
+    public Double getTemperature() {
         return temperature;
     }
 
-    public void setTempareture(Integer temperature) {
+    public void setTempareture(Double temperature) {
         this.temperature = temperature;
     }
 

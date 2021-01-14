@@ -23,7 +23,16 @@
                         <td class="user_name"><c:out value="${card.user.name}" /></td>
                         <td class="card_date"><fmt:formatDate value='${card.card_date}' pattern='yyyy-MM-dd' /></td>
                         <td class="temperature">${card.temperature}</td>
-                        <td class="attendance">${card.attendance}</td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${card.attendance == 0}">出席</c:when>
+                                <c:when test="${card.attendance == 1}">遅刻</c:when>
+                                <c:when test="${card.attendance == 2}">欠席</c:when>
+                                <c:when test="${card.attendance == 3}">忌引き</c:when>
+                                <c:when test="${card.attendance == 4}">出席停止</c:when>
+                                <c:otherwise>その他</c:otherwise>
+                            </c:choose>
+                        </td>
                         <td class="action"><a href="<c:url value='/reports/show?id=${card.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>
