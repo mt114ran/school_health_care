@@ -22,7 +22,17 @@
                     <tr class="row${status.count % 2}">
                         <td class="user_name"><c:out value="${card.user.name}" /></td>
                         <td class="card_date"><fmt:formatDate value='${card.card_date}' pattern='yyyy-MM-dd' /></td>
-                        <td class="temperature">${card.temperature}</td>
+                        <c:choose>
+                            <c:when test="${card.temperature >= 38}">
+                                <td class="high_fever_temperature">${card.temperature}</td>
+                            </c:when>
+                            <c:when test="${card.temperature < 38 and card.temperature >= 37}">
+                                <td class="low_fever_temperature">${card.temperature}</td>
+                            </c:when>
+                            <c:otherwise>
+                                <td class="temperature">${card.temperature}</td>
+                            </c:otherwise>
+                        </c:choose>
                         <td>
                             <c:choose>
                                 <c:when test="${card.attendance == 0}">出席</c:when>

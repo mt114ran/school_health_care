@@ -171,3 +171,13 @@ h3 {
     font-family:'Font Awesome 5 Free'
     font-weight:900;
 }
+
+.high_fever_temperature {
+    color:red;
+    font-weight: 900;
+}
+
+.low_fever_temperature {
+    color:orange;
+    font-weight: 900;
+}
