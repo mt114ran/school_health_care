@@ -11,19 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Card;
+import models.User;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class ReportsShowServlet
+ * Servlet implementation class ReportsEditServlet
  */
-@WebServlet("/cards/show")
-public class CardsShowServlet extends HttpServlet {
+@WebServlet("/cards/edit")
+public class CardsEditServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CardsShowServlet() {
+    public CardsEditServlet() {
         super();
     }
 
@@ -37,10 +38,14 @@ public class CardsShowServlet extends HttpServlet {
 
         em.close();
 
-        request.setAttribute("card", c);
-        request.setAttribute("_token", request.getSession().getId());
+        User login_user = (User)request.getSession().getAttribute("login_user");
+        if(c != null && login_user.getId() == c.getUser().getId()) {
+            request.setAttribute("report", c);
+            request.setAttribute("_token", request.getSession().getId());
+            request.getSession().setAttribute("card_id", c.getId());
+        }
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/cards/show.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/cards/edit.jsp");
         rd.forward(request, response);
     }
 

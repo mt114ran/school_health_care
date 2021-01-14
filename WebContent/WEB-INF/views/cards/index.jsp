@@ -33,7 +33,7 @@
                                 <c:otherwise>その他</c:otherwise>
                             </c:choose>
                         </td>
-                        <td class="action"><a href="<c:url value='/reports/show?id=${card.id}' />">詳細を見る</a></td>
+                        <td class="action"><a href="<c:url value='/cards/show?id=${card.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
