@@ -27,7 +27,7 @@ import javax.persistence.Table;
     ),
     @NamedQuery(
         name = "getMyAllMessages",
-        query = "SELECT c FROM Card AS c WHERE c.user = :user ORDER BY c.id DESC"
+        query = "SELECT m FROM Message AS m WHERE m.user = :user ORDER BY m.id DESC"
     ),
     @NamedQuery(
         name = "getMyMessagesCount",
@@ -44,9 +44,6 @@ public class Message{
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
-    @Column(name = "message_id", nullable = false)
-    private Integer message_id;
 
     @Column(name = "message_date", nullable = false)
     private Date message_date;
@@ -75,14 +72,6 @@ public class Message{
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Integer getMessage_id() {
-        return message_id;
-    }
-
-    public void setMessage_id(Integer message_id) {
-        this.message_id = message_id;
     }
 
     public Date getMessage_date() {

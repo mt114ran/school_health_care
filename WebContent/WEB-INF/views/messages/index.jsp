@@ -20,10 +20,10 @@
                 </tr>
                 <c:forEach var="message" items="${messages}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td class="message_id"><c:out value="${message.message_id}" /></td>
+                        <td class="message_id"><c:out value="${message.id}" /></td>
                         <td class="user_name"><c:out value="${message.user.name}" /></td>
                         <td class="message_date"><fmt:formatDate value='${message.message_date}' pattern='yyyy-MM-dd' /></td>
-                        <td class="message_comment">${message.comment}</td>
+                        <td class="message_comment">${message.message}</td>
                         <td class="action"><a href="<c:url value='/cards/show?id=${message.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>

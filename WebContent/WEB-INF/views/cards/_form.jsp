@@ -18,7 +18,7 @@
 <c:out value="${sessionScope.login_user.name}" />
 <br /><br />
 
-<label for="temperature">検温結果</label><br />
+<label for="temperature">検温結果（一番近い数値を選択して下さい。）</label><br />
 <select name="temperature">
     <option value="36.0"<c:if test="${card.temperature == 36.0}"> selected</c:if>>36.0</option>
     <option value="36.1"<c:if test="${card.temperature == 36.1}"> selected</c:if>>36.1</option>
@@ -63,4 +63,4 @@
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />
-<button type="submit">投稿</button>
+<button type="submit">登録</button>
