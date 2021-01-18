@@ -36,9 +36,8 @@
                     </tbody>
                 </table>
 
-                <c:if test="${sessionScope.login_user.id == card.user.id}">
-                    <p><a href="<c:url value="/familis/edit?id=${family.id}" />">この家族データを編集する</a></p>
-                </c:if>
+                <p><a href="<c:url value="/families/edit?id=${family.id}" />">この家族データを編集する</a></p>
+
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>

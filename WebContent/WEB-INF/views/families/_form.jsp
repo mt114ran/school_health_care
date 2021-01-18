@@ -12,11 +12,11 @@
 </c:if>
 
 <label for="student_code">生徒のユーザー番号を入力して下さい</label><br />
-<input type="text" name="student_code" value="${user.code}" />
+<input type="text" name="student_code" value="${family.student}" />
 <br /><br />
 
 <label for="parent_code">保護者のユーザー番号を入力して下さい</label><br />
-<input type="text" name="parent_code" value="${user.code}" />
+<input type="text" name="parent_code" value="${family.parent}" />
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />
