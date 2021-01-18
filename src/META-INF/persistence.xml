@@ -6,6 +6,7 @@
         <class>models.Card</class>
         <class>models.Message</class>
         <class>models.Family</class>
+        <class>models.Group</class>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
