@@ -21,7 +21,7 @@
                             <a href="<c:url value='/cards/index' />"><i class="fas fa-users"></i> カード管理</a>&nbsp;&emsp;&emsp;
                             <a href="<c:url value='/messages/index' />"><i class="fas fa-clipboard-list"></i> メッセージ管理</a>&nbsp;&emsp;&emsp;
                         </c:if>
-                        <a href="<c:url value='/users/index' />"><i class="fas fa-hands-helping"></i> 生徒管理</a>&nbsp;&emsp;&emsp;
+                        <a href="<c:url value='/users/index' />"><i class="fas fa-hands-helping"></i> 家族管理</a>&nbsp;&emsp;&emsp;
                         <a href="<c:url value='/users/index' />"><i class="fas fa-heart"></i> 保護者管理</a>&nbsp;&emsp;&emsp;
                     </c:if>
                 </div>
