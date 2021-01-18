@@ -5,7 +5,7 @@
         <c:choose>
             <c:when test="${family != null}">
                 <h2>家族データ　編集ページ</h2>
-                <form method="POST" action="<c:url value='/familys/update' />">
+                <form method="POST" action="<c:url value='/families/update' />">
                     <c:import url="_form.jsp" />
                 </form>
             </c:when>

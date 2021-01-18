@@ -40,6 +40,7 @@ public class FamiliesEditServlet extends HttpServlet {
         if(f != null) {
             request.setAttribute("family", f);
             request.setAttribute("_token", request.getSession().getId());
+            request.getSession().setAttribute("family_id", f.getId());
         }
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/families/edit.jsp");
