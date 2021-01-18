@@ -30,10 +30,10 @@ public class Family {
     private Integer id;
 
     @Column(name = "student", nullable = false)
-    private User student;
+    private Integer student;
 
     @Column(name = "parent", nullable = false)
-    private User parent;
+    private Integer parent;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -49,19 +49,19 @@ public class Family {
         this.id = id;
     }
 
-    public User getStudent() {
+    public Integer getStudent() {
         return student;
     }
 
-    public void setStudent(User student) {
+    public void setStudent(Integer student) {
         this.student = student;
     }
 
-    public User getParent() {
+    public Integer getParent() {
         return parent;
     }
 
-    public void setParent(User parent) {
+    public void setParent(Integer parent) {
         this.parent = parent;
     }
 
