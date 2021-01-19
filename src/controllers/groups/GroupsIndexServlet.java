@@ -15,7 +15,7 @@ import models.Group;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class EmployeesIndexServlet
+ * Servlet implementation class GroupsIndexServlet
  */
 @WebServlet("/groups/index")
 public class GroupsIndexServlet extends HttpServlet {

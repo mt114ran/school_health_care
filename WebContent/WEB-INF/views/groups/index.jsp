@@ -19,12 +19,11 @@
                 <c:forEach var="group" items="${groups}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${group.id}" /></td>
-                        <td><c:out value="${group.name}" /></td>
+                        <td><c:out value="${group.group_name}" /></td>
                         <td><a href="<c:url value='/groups/show?id=${group.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
-
         </table>
 
         <div id="pagination">

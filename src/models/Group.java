@@ -21,6 +21,10 @@ import javax.persistence.Table;
         name = "getAllGroupsCount",
         query = "SELECT COUNT(g) FROM Group AS g"
     ),
+    @NamedQuery(
+            name = "getNameGroupsCount",
+            query = "SELECT COUNT(g) FROM Group AS g WHERE g.group_name = :group_name"
+        ),
 })
 @Entity
 public class Group {
@@ -29,7 +33,7 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "group_name", nullable = false)
+    @Column(name = "group_name", nullable = false, unique = true)
     private String group_name;
 
     @Column(name = "created_at", nullable = false)
@@ -46,11 +50,11 @@ public class Group {
         this.id = id;
     }
 
-    public String getGroupName() {
+    public String getGroup_name() {
         return group_name;
     }
 
-    public void setGroupName(String group_name) {
+    public void setGroup_name(String group_name) {
         this.group_name = group_name;
     }
 

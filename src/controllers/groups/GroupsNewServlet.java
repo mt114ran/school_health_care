@@ -32,7 +32,7 @@ public class GroupsNewServlet extends HttpServlet {
         request.setAttribute("_token", request.getSession().getId());
 
         Group g = new Group();
-        request.setAttribute("g", g);
+        request.setAttribute("group", g);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/groups/new.jsp");
         rd.forward(request, response);

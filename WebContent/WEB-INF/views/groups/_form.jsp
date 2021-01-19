@@ -11,7 +11,7 @@
 </c:if>
 
 <label for="group_name">グループの名前を入力して下さい</label><br />
-<input type="text" name="group_name" value="${group.name}" />
+<input type="text" name="group_name" value="${group.group_name}" />
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />
