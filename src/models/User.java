@@ -32,7 +32,11 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getGroupMembers",
             query = "SELECT u FROM User AS u WHERE u.id in (SELECT gm.user.id FROM GroupMember As gm WHERE gm.group.id = :group_id)"
-        )
+    ),
+    @NamedQuery(
+            name = "getGroupMembersCount",
+            query = "SELECT COUNT(u) FROM User AS u WHERE u.id in (SELECT gm.user.id FROM GroupMember As gm WHERE gm.group.id = :group_id)"
+    )
 })
 @Entity
 public class User {

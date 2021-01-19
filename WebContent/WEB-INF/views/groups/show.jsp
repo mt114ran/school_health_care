@@ -40,6 +40,43 @@
             </c:otherwise>
         </c:choose>
 
+         <h2>参加メンバー</h2>
+        <table id="member_list">
+            <tbody>
+                <tr>
+                    <th>ユーザー番号</th>
+                    <th>氏名</th>
+                    <th>アカウント種類</th>
+                    <th>操作</th>
+                </tr>
+                <c:forEach var="member" items="${members}" varStatus="status">
+                    <tr class="row${status.count % 2}">
+                        <td><c:out value="${member.code}" /></td>
+                        <td><c:out value="${member.name}" /></td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${member.acc_inf == 0}">先生</c:when>
+                                <c:when test="${member.acc_inf == 1}">生徒</c:when>
+                                <c:otherwise>保護者</c:otherwise>
+                            </c:choose>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${member.delete_flag == 1}">
+                                    （削除済み）
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="<c:url value='/users/show?id=${user.id}' />">詳細を表示</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+
+
+
         <p><a href="<c:url value="/groups/index" />">一覧に戻る</a></p>
     </c:param>
 </c:import>

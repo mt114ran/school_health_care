@@ -1,6 +1,7 @@
 package controllers.groups;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Group;
+import models.User;
 import utils.DBUtil;
 
 /**
@@ -35,9 +37,22 @@ public class GroupsShowServlet extends HttpServlet {
 
         Group g = em.find(Group.class, Integer.parseInt(request.getParameter("id")));
 
+        long members_count = (long)em.createNamedQuery("getGroupMembersCount", Long.class)
+                                        .setParameter("group_id",g.getId())
+                                        .getSingleResult();
+
+        List<User> members = null;
+
+        if(members_count != 0){
+            members = em.createNamedQuery("getGroupMembers",User.class)
+                        .setParameter("group_id",g.getId())
+                        .getResultList();
+        }
+
         em.close();
 
         request.setAttribute("group", g);
+        request.setAttribute("members", members);
         request.setAttribute("_token", request.getSession().getId());
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/groups/show.jsp");
