@@ -51,6 +51,7 @@ public class GroupMembersEditServlet extends HttpServlet {
         request.setAttribute("users", users);
         request.setAttribute("users_count", users_count);
         request.setAttribute("page", page);
+        request.setAttribute("_token", request.getSession().getId());
 
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));

@@ -46,19 +46,19 @@ public class GroupMember{
         this.id = id;
     }
 
-    public User getMember_id() {
+    public User getMember() {
         return user;
     }
 
-    public void setMember_id(User user) {
+    public void setMember(User user) {
         this.user = user;
     }
 
-    public Group getGroup_id() {
+    public Group getGroup() {
         return group;
     }
 
-    public void setGroup_id(Group group) {
+    public void setGroup(Group group) {
         this.group = group;
     }
 

@@ -51,7 +51,7 @@ public class GroupsShowServlet extends HttpServlet {
 
         em.close();
 
-        request.setAttribute("group", g);
+        request.getSession().setAttribute("group", g);
         request.setAttribute("members", members);
         request.setAttribute("_token", request.getSession().getId());
 

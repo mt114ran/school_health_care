@@ -34,7 +34,19 @@
                                     （削除済み）
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="<c:url value='/users/show?id=${user.id}' />">詳細を表示</a>
+
+                                    <a href="#" onclick="confirmMakeMember();">登録する</a>
+                                    <form method="POST" action="${pageContext.request.contextPath}/group_members/create?id=${user.id}">
+                                        <input type="hidden" name="_token" value="${_token}" />
+                                    </form>
+                                    <script>
+                                    function confirmMakeMember() {
+                                        if(confirm("登録してよろしいですか？")) {
+                                            document.forms[0].submit();
+                                            }
+                                        }
+                                    </script>
+
                                 </c:otherwise>
                             </c:choose>
                         </td>
