@@ -28,7 +28,11 @@ import javax.persistence.Table;
     @NamedQuery(
         name = "checkLoginCodeAndPassword",
         query = "SELECT u FROM User AS u WHERE u.delete_flag = 0 AND u.code = :code AND u.password = :pass"
-    )
+    ),
+    @NamedQuery(
+            name = "getGroupMembers",
+            query = "SELECT u FROM User AS u WHERE u.id in (SELECT gm.user.id FROM GroupMember As gm WHERE gm.group.id = :group_id)"
+        )
 })
 @Entity
 public class User {
