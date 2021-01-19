@@ -76,7 +76,7 @@
         </table>
 
 
-
-        <p><a href="<c:url value="/groups/index" />">一覧に戻る</a></p>
+        <p><a href="<c:url value="/group_members/edit" />">メンバーの追加・削除</a></p>
+        <p><a href="<c:url value="/groups/index" />">グループ情報一覧に戻る</a></p>
     </c:param>
 </c:import>
