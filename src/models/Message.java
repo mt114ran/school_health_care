@@ -45,6 +45,10 @@ public class Message{
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "group_id", nullable = false)
+    private Group group;
+
     @Column(name = "message_date", nullable = false)
     private Date message_date;
 
@@ -72,6 +76,14 @@ public class Message{
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public Date getMessage_date() {

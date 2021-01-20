@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Group;
 import models.Message;
 import models.User;
 import models.validators.MessageValidator;
@@ -52,6 +53,16 @@ public class MessagesCreateServlet extends HttpServlet {
 
             m.setMessage_date(message_date);
             m.setMessage(request.getParameter("message"));
+
+
+        //POST送信より、選択したgroupのidを受け取り、idからgroupモデルを特定し取得する
+            Integer group_id = Integer.parseInt(request.getParameter("group"));
+
+            models.Group group = (Group) em.createNamedQuery("getGroupByGroupId",models.Group.class)
+                            .setParameter("group_id",group_id)
+                            .getSingleResult();
+            m.setGroup(group);
+
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             m.setCreated_at(currentTime);

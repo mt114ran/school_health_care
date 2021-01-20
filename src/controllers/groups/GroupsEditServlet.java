@@ -38,7 +38,7 @@ public class GroupsEditServlet extends HttpServlet {
         em.close();
 
         if(g != null) {
-            request.setAttribute("group", g);
+            request.getSession().setAttribute("group", g);
             request.setAttribute("_token", request.getSession().getId());
             request.getSession().setAttribute("group_id", g.getId());
         }

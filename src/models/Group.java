@@ -25,6 +25,14 @@ import javax.persistence.Table;
             name = "getNameGroupsCount",
             query = "SELECT COUNT(g) FROM Group AS g WHERE g.group_name = :group_name"
         ),
+    @NamedQuery(
+            name = "getGroupByGroupId",
+            query = "SELECT g FROM Group AS g WHERE g.id = :group_id"
+        ),
+    @NamedQuery(
+            name = "getGroupByGroupIdCount",
+            query = "SELECT COUNT(g) FROM Group AS g WHERE g.id = :group_id"
+        )
 })
 @Entity
 public class Group {

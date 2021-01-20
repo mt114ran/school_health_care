@@ -18,6 +18,14 @@
 <c:out value="${sessionScope.login_user.name}" />
 <br /><br />
 
+<label for="group">メッセージ先のグループ</label><br />
+<select name="group">
+    <c:forEach var="group" items="${groups}" varStatus="status">
+        <option value="${group.id}"<c:if test="${card.attendance == 0}"> selected</c:if>>${group.group_name}</option>
+    </c:forEach>
+</select>
+<br /><br />
+
 <label for="message">メッセージ</label><br />
 <textarea name="message" rows="10" cols="50">${message.message}</textarea>
 <br /><br />

@@ -15,6 +15,7 @@
                     <th class="message_id">メッセージID</th>
                     <th class="user_name">ユーザー名</th>
                     <th class="message_date">日付</th>
+                    <th class="message_group">メッセージ先グループ</th>
                     <th class="message">メッセージ</th>
                     <th class="action">操作</th>
                 </tr>
@@ -23,6 +24,7 @@
                         <td class="message_id"><c:out value="${message.id}" /></td>
                         <td class="user_name"><c:out value="${message.user.name}" /></td>
                         <td class="message_date"><fmt:formatDate value='${message.message_date}' pattern='yyyy-MM-dd' /></td>
+                        <td class="message_group"><c:out value="${message.group.group_name}" /></td>
                         <td class="message_comment">${message.message}</td>
                         <td class="action"><a href="<c:url value='/cards/show?id=${message.id}' />">詳細を見る</a></td>
                     </tr>
