@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
         name = "getAllUsers",
-        query = "SELECT u FROM User AS u ORDER BY u.id DESC"
+        query = "SELECT u FROM User AS u"
     ),
     @NamedQuery(
         name = "getUsersCount",

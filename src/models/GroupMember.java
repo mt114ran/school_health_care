@@ -18,7 +18,15 @@ import javax.persistence.Table;
     @NamedQuery(
         name = "getGroupMemberRelation",
         query = "SELECT gm FROM GroupMember AS gm Where gm.user = :user and gm.group = :group"
-    )
+    ),
+@NamedQuery(
+        name = "getGroupMemberRelationCount",
+        query = "SELECT COUNT(gm) FROM GroupMember AS gm Where gm.user = :user and gm.group = :group"
+    ),
+@NamedQuery(
+        name = "getGroupMemberRelationCountByUserId",
+        query = "SELECT COUNT(gm) FROM GroupMember AS gm Where gm.user.id = :user_id and gm.group = :group"
+    ),
 })
 @Entity
 public class GroupMember{

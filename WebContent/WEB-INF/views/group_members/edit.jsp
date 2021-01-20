@@ -29,24 +29,24 @@
                             </c:choose>
                         </td>
                         <td>
-                            <c:choose>
-                                <c:when test="${user.delete_flag == 1}">
-                                    （削除済み）
-                                </c:when>
-                                <c:otherwise>
 
+                        <%-- 対象のグループにユーザーが登録しているかによって登録・解除の表示を切り替える --%>
+                        <%-- （注意！）userリストの順番とmember_flagの順番を同一にする必要がある --%>
+                            <c:choose>
+                                <c:when test="${member_flag[user.id -1] == 0}">
                                     <form action="${pageContext.request.contextPath}/group_members/create?id=${user.id}" method="post">
                                         <input type="hidden" name="_token" value="${_token}" />
                                         <input type="submit" value="メンバーに登録する" style="WIDTH: 200px; HEIGHT: 25px">
                                     </form>
-
+                                </c:when>
+                                <c:otherwise>
                                     <form action="${pageContext.request.contextPath}/group_members/destroy?id=${user.id}" method="post">
                                         <input type="hidden" name="_token" value="${_token}" />
                                         <input type="submit" value="登録を解除する" style="WIDTH: 200px; HEIGHT: 25px">
                                     </form>
-
                                 </c:otherwise>
                             </c:choose>
+
                         </td>
                     </tr>
                 </c:forEach>

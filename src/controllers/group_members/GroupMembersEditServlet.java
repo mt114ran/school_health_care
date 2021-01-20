@@ -1,6 +1,7 @@
 package controllers.group_members;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -47,8 +48,20 @@ public class GroupMembersEditServlet extends HttpServlet {
         long users_count = (long)em.createNamedQuery("getUsersCount", Long.class)
                                        .getSingleResult();
 
+        List<Long> member_flag = new ArrayList<>();
+
+        for(User user : users){
+            member_flag.add(
+                        (Long)em.createNamedQuery("getGroupMemberRelationCount", Long.class)
+                        .setParameter("user",user)
+                        .setParameter("group",(models.Group)request.getSession().getAttribute("group"))
+                        .getSingleResult()
+                    );
+        }
+
         em.close();
 
+        request.setAttribute("member_flag",member_flag);
         request.setAttribute("users", users);
         request.setAttribute("users_count", users_count);
         request.setAttribute("page", page);
