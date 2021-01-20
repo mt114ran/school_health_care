@@ -42,7 +42,7 @@
                                 <c:otherwise>
                                     <form action="${pageContext.request.contextPath}/group_members/destroy?id=${user.id}" method="post">
                                         <input type="hidden" name="_token" value="${_token}" />
-                                        <input type="submit" value="登録を解除する" style="WIDTH: 200px; HEIGHT: 25px">
+                                        <input type="submit" value="登録を解除する" style="WIDTH: 200px; HEIGHT: 25px" class="button">
                                     </form>
                                 </c:otherwise>
                             </c:choose>
