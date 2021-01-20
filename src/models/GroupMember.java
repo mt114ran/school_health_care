@@ -16,8 +16,8 @@ import javax.persistence.Table;
 @Table(name = "group_members")
 @NamedQueries({
     @NamedQuery(
-        name = "getMembers",
-        query = "SELECT gm FROM GroupMember AS gm ORDER BY gm.user.id DESC"
+        name = "getGroupMemberRelation",
+        query = "SELECT gm FROM GroupMember AS gm Where gm.user = :user and gm.group = :group"
     )
 })
 @Entity

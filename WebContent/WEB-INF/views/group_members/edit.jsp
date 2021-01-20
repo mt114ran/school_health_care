@@ -37,20 +37,13 @@
 
                                     <form action="${pageContext.request.contextPath}/group_members/create?id=${user.id}" method="post">
                                         <input type="hidden" name="_token" value="${_token}" />
-                                        <input type="submit" value="POSTリクエスト送信" style="WIDTH: 200px; HEIGHT: 20px">
+                                        <input type="submit" value="メンバーに登録する" style="WIDTH: 200px; HEIGHT: 25px">
                                     </form>
 
-                                    <a href="#" onclick="confirmMakeMember();">登録する</a>
-                                    <form method="POST" action="${pageContext.request.contextPath}/group_members/create?id=${user.id}">
+                                    <form action="${pageContext.request.contextPath}/group_members/destroy?id=${user.id}" method="post">
                                         <input type="hidden" name="_token" value="${_token}" />
+                                        <input type="submit" value="登録を解除する" style="WIDTH: 200px; HEIGHT: 25px">
                                     </form>
-                                    <script>
-                                    function confirmMakeMember() {
-                                        if(confirm("登録してよろしいですか？")) {
-                                            document.forms[0].submit();
-                                            }
-                                        }
-                                    </script>
 
                                 </c:otherwise>
                             </c:choose>

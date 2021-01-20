@@ -1,7 +1,6 @@
 package controllers.group_members;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 
 import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
@@ -17,14 +16,14 @@ import utils.DBUtil;
 /**
  * Servlet implementation class ReportsCreateServlet
  */
-@WebServlet("/group_members/create")
-public class GroupMembersCreateServlet extends HttpServlet {
+@WebServlet("/group_members/destroy")
+public class GroupMembersDestroyServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GroupMembersCreateServlet() {
+    public GroupMembersDestroyServlet() {
         super();
     }
 
@@ -37,26 +36,22 @@ public class GroupMembersCreateServlet extends HttpServlet {
 
             EntityManager em = DBUtil.createEntityManager();
 
-            GroupMember gm = new GroupMember();
-
             User u = em.find(User.class, Integer.parseInt(request.getParameter("id")));
             models.Group g = (models.Group)request.getSession().getAttribute("group");
 
-            gm.setMember(u);
-            gm.setGroup(g);
-            Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-            gm.setCreated_at(currentTime);
+            GroupMember gm = (GroupMember)em.createNamedQuery("getGroupMemberRelation", GroupMember.class)
+                                           .setParameter("user",u)
+                                           .setParameter("group", g)
+                                           .getSingleResult();
 
             em.getTransaction().begin();
-            em.persist(gm);
+            em.remove(gm);       // データ削除
             em.getTransaction().commit();
             em.close();
 
-            request.getSession().setAttribute("flush", "ユーザー番号【 " + u.getCode() + " 】、ユーザー名【 " +  u.getName() + " 】を登録しました。");
+            request.getSession().setAttribute("flush", "ユーザー番号【 " + u.getCode() + " 】、ユーザー名【 " +  u.getName() + " 】の登録を解除しました。");
 
             response.sendRedirect(request.getContextPath() + "/group_members/edit");
-
         }
     }
-
 }
