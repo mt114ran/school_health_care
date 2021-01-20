@@ -38,6 +38,7 @@ public class GroupMembersEditServlet extends HttpServlet {
         try{
             page = Integer.parseInt(request.getParameter("page"));
         } catch(NumberFormatException e) { }
+
         List<User> users = em.createNamedQuery("getAllUsers", User.class)
                                      .setFirstResult(15 * (page - 1))
                                      .setMaxResults(15)

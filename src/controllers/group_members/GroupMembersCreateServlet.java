@@ -47,7 +47,6 @@ public class GroupMembersCreateServlet extends HttpServlet {
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             gm.setCreated_at(currentTime);
 
-
             em.getTransaction().begin();
             em.persist(gm);
             em.getTransaction().commit();

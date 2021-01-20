@@ -35,6 +35,11 @@
                                 </c:when>
                                 <c:otherwise>
 
+                                    <form action="${pageContext.request.contextPath}/group_members/create?id=${user.id}" method="post">
+                                        <input type="hidden" name="_token" value="${_token}" />
+                                        <input type="submit" value="POSTリクエスト送信" style="WIDTH: 200px; HEIGHT: 20px">
+                                    </form>
+
                                     <a href="#" onclick="confirmMakeMember();">登録する</a>
                                     <form method="POST" action="${pageContext.request.contextPath}/group_members/create?id=${user.id}">
                                         <input type="hidden" name="_token" value="${_token}" />
