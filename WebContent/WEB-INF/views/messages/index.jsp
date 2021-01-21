@@ -26,7 +26,7 @@
                         <td class="message_date"><fmt:formatDate value='${message.message_date}' pattern='yyyy-MM-dd' /></td>
                         <td class="message_group"><c:out value="${message.group.group_name}" /></td>
                         <td class="message_comment">${message.message}</td>
-                        <td class="action"><a href="<c:url value='/cards/show?id=${message.id}' />">詳細を見る</a></td>
+                        <td class="action"><a href="<c:url value='/messages/show?id=${message.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
