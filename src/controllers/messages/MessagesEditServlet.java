@@ -52,7 +52,7 @@ public class MessagesEditServlet extends HttpServlet {
 
         User login_user = (User)request.getSession().getAttribute("login_user");
         if(m != null && login_user.getId() == m.getUser().getId()) {
-            request.setAttribute("message", m);
+            request.getSession().setAttribute("message", m);
             request.getSession().setAttribute("groups", groups);
             request.setAttribute("_token", request.getSession().getId());
             request.getSession().setAttribute("message_id", m.getId());
