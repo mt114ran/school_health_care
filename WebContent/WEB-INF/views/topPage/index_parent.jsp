@@ -8,7 +8,7 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>SCHOOL HEALTH CAREへようこそ</h2>
+        <h2>SCHOOL HEALTH CARE　トップページ</h2>
         <h3>【保護者のカード　一覧】</h3>
         <table id="card_list">
             <tbody>

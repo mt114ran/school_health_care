@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Card;
+import models.Message;
 import models.User;
 import utils.DBUtil;
 
@@ -52,6 +53,20 @@ public class TopPageIndexServlet extends HttpServlet {
         long cards_count = (long)em.createNamedQuery("getMyCardsCount", Long.class)
                                      .setParameter("user", login_user)
                                      .getSingleResult();
+
+        if(login_user.getAcc_inf() == 1){
+            long messages_count = (long)em.createNamedQuery("getMyGroupMessagesCount", Long.class)
+                                                .setParameter("user", login_user)
+                                                .getSingleResult();
+
+            if(messages_count > 0){
+                List<Message> messages = em.createNamedQuery("getMyGroupMessages", Message.class)
+                                            .setParameter("user", login_user)
+                                            .getResultList();
+
+                request.setAttribute("messages", messages);
+            }
+        }
 
         em.close();
 

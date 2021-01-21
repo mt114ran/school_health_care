@@ -32,6 +32,14 @@ import javax.persistence.Table;
     @NamedQuery(
         name = "getMyMessagesCount",
         query = "SELECT COUNT(m) FROM Message AS m WHERE m.user = :user"
+    ),
+    @NamedQuery(
+        name = "getMyGroupMessages",
+        query = "SELECT m FROM Message AS m WHERE m.group.id in (SELECT gm.group.id FROM GroupMember As gm WHERE gm.user = :user) "
+    ),
+    @NamedQuery(
+        name = "getMyGroupMessagesCount",
+        query = "SELECT COUNT(m) FROM Message AS m WHERE m.group.id in (SELECT gm.group.id FROM GroupMember As gm WHERE gm.user = :user) "
     )
 })
 @Entity
