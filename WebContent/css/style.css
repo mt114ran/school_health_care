@@ -183,21 +183,94 @@ h3 {
 }
 
 .button {
+  width: 200px;
+  height: 25px;
   display       : inline-block;
   border-radius : 5%;          /* 角丸       */
-  font-size     : 18pt;        /* 文字サイズ */
+  font-size     : 12pt;        /* 文字サイズ */
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
-  padding       : 12px 12px;   /* 余白       */
-  background    : rgba(255, 153, 153, 0.84);     /* 背景色     */
-  color         : #ffffff;     /* 文字色     */
-  line-height   : 1em;         /* 1行の高さ  */
+  padding       : 5px 5px;   /* 余白       */
+  line-height   : 15px;         /* 1行の高さ  */
   transition    : .3s;         /* なめらか変化 */
   box-shadow    : 4px 4px 3px #666666;  /* 影の設定 */
+}
+
+.button,.create {
+  background    : rgba(51, 204, 102, 0.84);     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  border        : 2px solid rgba(5, 3, 153, 0.84);    /* 枠の指定 */
+}
+
+.button,.delete {
+  background    : rgba(255, 153, 153, 0.84);     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
   border        : 2px solid rgba(255, 153, 153, 0.84);    /* 枠の指定 */
 }
+
 .button:hover {
   box-shadow    : none;        /* カーソル時の影消去 */
   color         : rgba(255, 153, 153, 0.84);     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
 }
+
+
+
+
+
+
+
+table{
+  width: 100%;
+  border-collapse:separate;
+  border-spacing: 0;
+}
+
+table th:first-child{
+  border-radius: 5px 0 0 0;
+}
+
+table th:last-child{
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid #3c6690;
+}
+
+table th{
+  text-align: center;
+  color:white;
+  background: linear-gradient(#829ebc,#225588);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  width: 25%;
+  padding: 10px 0;
+}
+
+table td{
+  text-align: center;
+  border-left: 1px solid #a8b7c5;
+  border-bottom: 1px solid #a8b7c5;
+  border-top:none;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  width: 25%;
+  padding: 10px 0;
+}
+
+table td:last-child{
+  border-right: 1px solid #a8b7c5;
+}
+
+table tr:last-child td:first-child {
+  border-radius: 0 0 0 5px;
+}
+
+table tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
+}
+
+
+
+
+
+

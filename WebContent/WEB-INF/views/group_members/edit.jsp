@@ -36,13 +36,13 @@
                                 <c:when test="${member_flag[user.id -1] == 0}">
                                     <form action="${pageContext.request.contextPath}/group_members/create?id=${user.id}" method="post">
                                         <input type="hidden" name="_token" value="${_token}" />
-                                        <input type="submit" value="メンバーに登録する" style="WIDTH: 200px; HEIGHT: 25px">
+                                        <input type="submit" value="メンバーに登録する" class="button create">
                                     </form>
                                 </c:when>
                                 <c:otherwise>
                                     <form action="${pageContext.request.contextPath}/group_members/destroy?id=${user.id}" method="post">
                                         <input type="hidden" name="_token" value="${_token}" />
-                                        <input type="submit" value="登録を解除する" style="WIDTH: 200px; HEIGHT: 25px" class="button">
+                                        <input type="submit" value="登録を解除する" class="button delete">
                                     </form>
                                 </c:otherwise>
                             </c:choose>
