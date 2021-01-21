@@ -40,7 +40,7 @@
             </c:otherwise>
         </c:choose>
 
-         <h2>参加メンバー</h2>
+        <h2>参加メンバー</h2>
         <table id="member_list">
             <tbody>
                 <tr>

@@ -15,8 +15,8 @@
                     <th class="message_id">メッセージID</th>
                     <th class="user_name">ユーザー名</th>
                     <th class="message_date">日付</th>
-                    <th class="message_group">メッセージ先グループ</th>
-                    <th class="message">メッセージ</th>
+                    <th class="message_group">グループ</th>
+                    <th class="message">件名</th>
                     <th class="action">操作</th>
                 </tr>
                 <c:forEach var="message" items="${messages}" varStatus="status">
@@ -25,7 +25,7 @@
                         <td class="user_name"><c:out value="${message.user.name}" /></td>
                         <td class="message_date"><fmt:formatDate value='${message.message_date}' pattern='yyyy-MM-dd' /></td>
                         <td class="message_group"><c:out value="${message.group.group_name}" /></td>
-                        <td class="message_comment">${message.message}</td>
+                        <td class="message_comment">${message.title}</td>
                         <td class="action"><a href="<c:url value='/messages/show?id=${message.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>
@@ -48,4 +48,4 @@
         <p><a href="<c:url value='/messages/new' />">メッセージの登録</a></p>
 
     </c:param>
-</c:import>l>
+</c:import>

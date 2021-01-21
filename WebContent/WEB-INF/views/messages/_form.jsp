@@ -26,6 +26,10 @@
 </select>
 <br /><br />
 
+<label for="title">件名</label><br />
+<input type="text" name="title" value="${message.title}" />
+<br /><br />
+
 <label for="message">メッセージ</label><br />
 <textarea name="message" rows="10" cols="50">${message.message}</textarea>
 <br /><br />

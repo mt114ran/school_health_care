@@ -43,6 +43,7 @@ public class MessagesUpdateServlet extends HttpServlet {
             Message m = em.find(Message.class, (Integer)(request.getSession().getAttribute("message_id")));
 
             m.setMessage_date(Date.valueOf(request.getParameter("message_date")));
+            m.setTitle(request.getParameter("title"));
             m.setMessage(request.getParameter("message"));
             m.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 

@@ -26,6 +26,14 @@
                             <td><c:out value="${message.group.group_name}" /></td>
                         </tr>
                         <tr>
+                            <th>件名</th>
+                            <td><c:out value="${message.title}" /></td>
+                        </tr>
+                        <tr>
+                            <th>メッセージ内容</th>
+                            <td><c:out value="${message.message}" /></td>
+                        </tr>
+                        <tr>
                             <th>登録日時</th>
                             <td>
                                 <fmt:formatDate value="${message.created_at}" pattern="yyyy-MM-dd HH:mm:ss" />

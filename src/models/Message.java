@@ -60,6 +60,9 @@ public class Message{
     @Column(name = "message_date", nullable = false)
     private Date message_date;
 
+    @Column(name = "title", nullable = true)
+    private String title;
+
     @Lob
     @Column(name = "message", nullable = true)
     private String message;
@@ -100,6 +103,14 @@ public class Message{
 
     public void setMessage_date(Date message_date) {
         this.message_date = message_date;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getMessage() {

@@ -52,6 +52,7 @@ public class MessagesCreateServlet extends HttpServlet {
             }
 
             m.setMessage_date(message_date);
+            m.setTitle(request.getParameter("title"));
             m.setMessage(request.getParameter("message"));
 
 
