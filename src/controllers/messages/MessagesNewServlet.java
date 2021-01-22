@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Group;
 import models.Message;
+import models.User;
 import utils.DBUtil;
 
 /**
@@ -37,6 +38,8 @@ public class MessagesNewServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
         request.setAttribute("_token", request.getSession().getId());
 
+        User login_user = (User)request.getSession().getAttribute("login_user");
+
         int page = 1;
         try{
             page = Integer.parseInt(request.getParameter("page"));
@@ -46,16 +49,18 @@ public class MessagesNewServlet extends HttpServlet {
         m.setMessage_date(new Date(System.currentTimeMillis()));
         request.setAttribute("message", m);
 
-        long groups_count = (long)em.createNamedQuery("getAllGroupsCount", Long.class)
-                .getSingleResult();
+        long groups_count = (long)em.createNamedQuery("getMyGroupsCount", Long.class)
+                                        .setParameter("login_user",login_user)
+                                        .getSingleResult();
 
         List<Group> groups = null;
 
         if(groups_count != 0){
-            groups = em.createNamedQuery("getAllGroups",Group.class)
-            .setFirstResult(15 * (page - 1))
-            .setMaxResults(15)
-            .getResultList();
+            groups = em.createNamedQuery("getMyGroups",Group.class)
+                    .setParameter("login_user",login_user)
+                    .setFirstResult(15 * (page - 1))
+                    .setMaxResults(15)
+                    .getResultList();
         }
 
         em.close();

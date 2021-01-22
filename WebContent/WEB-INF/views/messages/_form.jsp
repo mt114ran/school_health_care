@@ -18,12 +18,20 @@
 <c:out value="${sessionScope.login_user.name}" />
 <br /><br />
 
-<label for="group">メッセージ先のグループ</label><br />
-<select name="group">
-    <c:forEach var="group" items="${groups}" varStatus="status">
-        <option value="${group.id}"<c:if test="${card.attendance == 0}"> selected</c:if>>${group.group_name}</option>
-    </c:forEach>
-</select>
+<c:choose>
+    <c:when test="${groups_count == 0}">
+       <p>※参加しているグループがありません。<br /><a href="<c:url value="/groups/index" />">コチラからグループの作成または参加を行ってください。</a></p>
+    </c:when>
+    <c:otherwise>
+        <label for="group">メッセージ先のグループ</label><br />
+        <select name="group">
+            <c:forEach var="group" items="${groups}" varStatus="status">
+                <option value="${group.id}"<c:if test="${card.attendance == 0}"> selected</c:if>>${group.group_name}</option>
+            </c:forEach>
+        </select>
+    </c:otherwise>
+</c:choose>
+
 <br /><br />
 
 <label for="title">件名</label><br />
