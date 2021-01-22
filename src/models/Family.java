@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -20,7 +22,7 @@ import javax.persistence.Table;
     @NamedQuery(
         name = "getAllFamiliesCount",
         query = "SELECT COUNT(f) FROM Family AS f"
-    ),
+    )
 })
 @Entity
 public class Family {
@@ -29,11 +31,13 @@ public class Family {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "student", nullable = false)
-    private String student;
+    @ManyToOne
+    @JoinColumn(name = "student", nullable = false)
+    private User student;
 
-    @Column(name = "parent", nullable = false)
-    private String parent;
+    @ManyToOne
+    @JoinColumn(name = "parent", nullable = false)
+    private User parent;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -49,19 +53,19 @@ public class Family {
         this.id = id;
     }
 
-    public String getStudent() {
+    public User getStudent() {
         return student;
     }
 
-    public void setStudent(String student) {
+    public void setStudent(User student) {
         this.student = student;
     }
 
-    public String getParent() {
+    public User getParent() {
         return parent;
     }
 
-    public void setParent(String parent) {
+    public void setParent(User parent) {
         this.parent = parent;
     }
 

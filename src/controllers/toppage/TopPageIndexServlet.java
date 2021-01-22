@@ -54,19 +54,35 @@ public class TopPageIndexServlet extends HttpServlet {
                                      .setParameter("user", login_user)
                                      .getSingleResult();
 
+
+
         if(login_user.getAcc_inf() == 1){
             long messages_count = (long)em.createNamedQuery("getMyGroupMessagesCount", Long.class)
                                                 .setParameter("user", login_user)
                                                 .getSingleResult();
-
             if(messages_count > 0){
                 List<Message> messages = em.createNamedQuery("getMyGroupMessages", Message.class)
                                             .setParameter("user", login_user)
                                             .getResultList();
-
                 request.setAttribute("messages", messages);
             }
         }
+
+
+
+        if(login_user.getAcc_inf() == 2){
+            long messages_count = (long)em.createNamedQuery("getMyFamilyGroupMessagesCount", Long.class)
+                                                .setParameter("login_user", login_user)
+                                                .getSingleResult();
+            if(messages_count > 0){
+                List<Message> messages = em.createNamedQuery("getMyFamilyGroupMessages", Message.class)
+                                            .setParameter("login_user", login_user)
+                                            .getResultList();
+                request.setAttribute("messages", messages);
+            }
+        }
+
+
 
         em.close();
 

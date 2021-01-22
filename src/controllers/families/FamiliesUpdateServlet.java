@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Family;
+import models.User;
 import models.validators.FamilyValidator;
 import utils.DBUtil;
 
@@ -40,8 +41,16 @@ public class FamiliesUpdateServlet extends HttpServlet {
 
             Family f = em.find(Family.class, (Integer)(request.getSession().getAttribute("family_id")));
 
-            f.setStudent(request.getParameter("student_code"));
-            f.setParent(request.getParameter("parent_code"));
+            f.setStudent(em.createNamedQuery("getUserByUserCode", User.class)
+                                .setParameter("user_code", request.getParameter("student_code"))
+                                .getSingleResult()
+                                );
+
+            f.setParent(em.createNamedQuery("getUserByUserCode", User.class)
+                                .setParameter("user_code", request.getParameter("parent_code"))
+                                .getSingleResult()
+                                );
+
             f.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 
             List<String> errors = FamilyValidator.validate(f, true, true);

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Family;
+import models.User;
 import models.validators.FamilyValidator;
 import utils.DBUtil;
 
@@ -40,8 +41,15 @@ public class FamiliesCreateServlet extends HttpServlet {
 
             Family f = new Family();
 
-            f.setStudent(request.getParameter("student_code"));
-            f.setParent(request.getParameter("parent_code"));
+            f.setStudent(em.createNamedQuery("getUserByUserCode", User.class)
+                                            .setParameter("user_code", request.getParameter("student_code"))
+                                            .getSingleResult()
+                                            );
+
+            f.setParent(em.createNamedQuery("getUserByUserCode", User.class)
+                                            .setParameter("user_code", request.getParameter("parent_code"))
+                                            .getSingleResult()
+                                            );
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             f.setCreated_at(currentTime);

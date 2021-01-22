@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import models.Family;
+import models.User;
 import utils.DBUtil;
 
 public class FamilyValidator {
@@ -26,9 +27,9 @@ public class FamilyValidator {
     }
 
     // 生徒のユーザー番号の確認
-    private static String validateStudentCode(String student_code, Boolean codeDuplicateCheckFlag) {
+    private static String validateStudentCode(User student, Boolean codeDuplicateCheckFlag) {
         // 必須入力チェック
-        if(student_code == null || student_code.equals("")) {
+        if(student.getCode() == null || student.getCode().equals("")) {
             return "生徒のユーザー番号を入力してください。";
         }
 
@@ -36,7 +37,7 @@ public class FamilyValidator {
         if(codeDuplicateCheckFlag) {
             EntityManager em = DBUtil.createEntityManager();
             long users_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class)
-                                           .setParameter("code", student_code)
+                                           .setParameter("code", student.getCode())
                                            .getSingleResult();
             em.close();
             if(users_count == 0) {
@@ -48,9 +49,9 @@ public class FamilyValidator {
     }
 
     // 保護者のユーザー番号の確認
-    private static String validateParentCode(String parent_code, Boolean codeDuplicateCheckFlag) {
+    private static String validateParentCode(User parent, Boolean codeDuplicateCheckFlag) {
         // 必須入力チェック
-        if(parent_code == null || parent_code.equals("")) {
+        if(parent.getCode() == null || parent.getCode().equals("")) {
             return "保護者のユーザー番号を入力してください。";
         }
 
@@ -58,7 +59,7 @@ public class FamilyValidator {
         if(codeDuplicateCheckFlag) {
             EntityManager em = DBUtil.createEntityManager();
             long users_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class)
-                                           .setParameter("code", parent_code)
+                                           .setParameter("code", parent.getCode())
                                            .getSingleResult();
             em.close();
             if(users_count == 0) {

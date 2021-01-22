@@ -13,15 +13,15 @@
             <tbody>
                 <tr>
                     <th>id</th>
-                    <th>生徒ID</th>
-                    <th>保護者ID</th>
+                    <th>生徒</th>
+                    <th>保護者</th>
                     <th>操作</th>
                 </tr>
                 <c:forEach var="family" items="${families}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${family.id}" /></td>
-                        <td><c:out value="${family.student}" /></td>
-                        <td><c:out value="${family.parent}" /></td>
+                        <td><c:out value="${family.student.name}" /></td>
+                        <td><c:out value="${family.parent.name}" /></td>
                         <td><a href="<c:url value='/families/show?id=${family.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>

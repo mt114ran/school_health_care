@@ -9,6 +9,44 @@
             </div>
         </c:if>
         <h2>SCHOOL HEALTH CARE　トップページ</h2>
+
+
+
+        <%-- 子供に届いているメッセージを保護者アカウントのトップページに表示 --%>
+        <h3>【先生のメッセージ】</h3>
+
+        <div  style="margin-bottom:100px">
+            <c:choose>
+                <c:when test="${messages != null}">
+                    <table id="message_list">
+                        <tbody>
+                            <tr>
+                                <th class="message_date">日付</th>
+                                <th class="message_group">グループ</th>
+                                <th class="user_name">担当教員</th>
+                                <th class="title">件名</th>
+                                <th class="action">操作</th>
+                            </tr>
+                            <c:forEach var="message" items="${messages}" varStatus="status">
+                                <tr class="row${status.count % 2}">
+                                    <td class="message_date"><fmt:formatDate value='${message.message_date}' pattern='yyyy-MM-dd' /></td>
+                                    <td class="message_group"><c:out value="${message.group.group_name}" /></td>
+                                    <td class="user_name"><c:out value="${message.user.name}" /></td>
+                                    <td class="message_title">${message.title}</td>
+                                    <td class="action"><a href="<c:url value='/messages/show?id=${message.id}' />">詳細を見る</a></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </c:when>
+                <c:otherwise>
+                    <h4>近日７日間のメッセージは届いていません。</h4>
+                </c:otherwise>
+            </c:choose>
+        </div>
+
+
+
         <h3>【保護者のカード　一覧】</h3>
         <table id="card_list">
             <tbody>

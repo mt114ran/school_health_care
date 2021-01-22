@@ -40,10 +40,6 @@ public class MessagesNewServlet extends HttpServlet {
 
         User login_user = (User)request.getSession().getAttribute("login_user");
 
-        int page = 1;
-        try{
-            page = Integer.parseInt(request.getParameter("page"));
-        } catch(NumberFormatException e) { }
 
         Message m = new Message();
         m.setMessage_date(new Date(System.currentTimeMillis()));
@@ -58,8 +54,6 @@ public class MessagesNewServlet extends HttpServlet {
         if(groups_count != 0){
             groups = em.createNamedQuery("getMyGroups",Group.class)
                     .setParameter("login_user",login_user)
-                    .setFirstResult(15 * (page - 1))
-                    .setMaxResults(15)
                     .getResultList();
         }
 
