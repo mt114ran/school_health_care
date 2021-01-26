@@ -38,13 +38,29 @@ import javax.persistence.Table;
         query = "SELECT u FROM User AS u WHERE u.delete_flag = 0 AND u.code = :code AND u.password = :pass"
     ),
     @NamedQuery(
-            name = "getGroupMembers",
-            query = "SELECT u FROM User AS u WHERE u.id in (SELECT gm.user.id FROM GroupMember As gm WHERE gm.group.id = :group_id)"
+        name = "getGroupMembers",
+        query = "SELECT u FROM User AS u WHERE u.id in (SELECT gm.user.id FROM GroupMember As gm WHERE gm.group.id = :group_id)"
     ),
     @NamedQuery(
-            name = "getGroupMembersCount",
-            query = "SELECT COUNT(u) FROM User AS u WHERE u.id in (SELECT gm.user.id FROM GroupMember As gm WHERE gm.group.id = :group_id)"
-    )
+        name = "getGroupMembersCount",
+        query = "SELECT COUNT(u) FROM User AS u WHERE u.id in (SELECT gm.user.id FROM GroupMember As gm WHERE gm.group.id = :group_id)"
+    ),
+    @NamedQuery(
+        name = "getStudent",
+        query = "SELECT u FROM User AS u Where u.acc_inf = 1"
+    ),
+    @NamedQuery(
+        name = "getStudentCount",
+        query = "SELECT COUNT(u) FROM User AS u Where u.acc_inf = 1"
+    ),
+    @NamedQuery(
+        name = "getParent",
+        query = "SELECT u FROM User AS u Where u.acc_inf = 2"
+    ),
+    @NamedQuery(
+        name = "getParentCount",
+        query = "SELECT COUNT(u) FROM User AS u Where u.acc_inf = 2"
+    ),
 })
 @Entity
 public class User {
