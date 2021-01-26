@@ -12,6 +12,46 @@
 
 
 
+        <%-- 紐づいている生徒アカウントを表示する --%>
+        <h3>【登録している家族アカウント】</h3>
+
+        <div  style="margin-bottom:100px">
+            <c:choose>
+                <c:when test="${family_users != null}">
+                    <table id="family_user_list">
+                        <tbody>
+                            <tr>
+                                <th>ユーザー番号</th>
+                                <th>氏名</th>
+                                <th>操作</th>
+                            </tr>
+                            <c:forEach var="family_user" items="${family_users}" varStatus="status">
+                                <tr class="row${status.count % 2}">
+                                    <td><c:out value="${family_user.code}" /></td>
+                                    <td><c:out value="${family_user.name}" /></td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${family_user.delete_flag == 1}">
+                                                （削除済み）
+                                            </c:when>
+                                            <c:otherwise>
+                                                <a href="<c:url value='/users/show?id=${family_user.id}' />">詳細を表示</a>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </c:when>
+                <c:otherwise>
+                    <h4>登録している家族アカウントはありません。</h4>
+                </c:otherwise>
+            </c:choose>
+        </div>
+
+
+
         <%-- 子供に届いているメッセージを保護者アカウントのトップページに表示 --%>
         <h3>【先生のメッセージ】</h3>
 
@@ -46,49 +86,6 @@
         </div>
 
 
-
-        <h3>【保護者のカード　一覧】</h3>
-        <table id="card_list">
-            <tbody>
-                <tr>
-                    <th class="user_name">ユーザー名</th>
-                    <th class="card_date">日付</th>
-                    <th class="temperature">検温結果</th>
-                    <th class="attendance">出席</th>
-                    <th class="action">操作</th>
-                </tr>
-                <c:forEach var="card" items="${cards}" varStatus="status">
-                    <tr class="row${status.count % 2}">
-                        <td class="user_name"><c:out value="${card.user.name}" /></td>
-                        <td class="card_date"><fmt:formatDate value='${card.card_date}' pattern='yyyy-MM-dd' /></td>
-
-                        <c:choose>
-                            <c:when test="${card.temperature >= 38}">
-                                <td class="high_fever_temperature">${card.temperature}</td>
-                            </c:when>
-                            <c:when test="${card.temperature < 38 and card.temperature >= 37}">
-                                <td class="low_fever_temperature">${card.temperature}</td>
-                            </c:when>
-                            <c:otherwise>
-                                <td class="temperature">${card.temperature}</td>
-                            </c:otherwise>
-                        </c:choose>
-
-                        <td>
-                            <c:choose>
-                                <c:when test="${card.attendance == 0}">出席</c:when>
-                                <c:when test="${card.attendance == 1}">遅刻</c:when>
-                                <c:when test="${card.attendance == 2}">欠席</c:when>
-                                <c:when test="${card.attendance == 3}">忌引き</c:when>
-                                <c:when test="${card.attendance == 4}">出席停止</c:when>
-                                <c:otherwise>その他</c:otherwise>
-                            </c:choose>
-                        </td>
-                        <td class="action"><a href="<c:url value='/cards/show?id=${card.id}' />">詳細を見る</a></td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
 
         <div id="pagination">
             （全 ${cards_count} 件）<br />

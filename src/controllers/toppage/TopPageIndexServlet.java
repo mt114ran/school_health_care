@@ -80,9 +80,17 @@ public class TopPageIndexServlet extends HttpServlet {
                                             .getResultList();
                 request.setAttribute("messages", messages);
             }
+
+            long family_users_count = (long)em.createNamedQuery("getMyFamilyUsersCount", Long.class)
+                                                .setParameter("login_user", login_user)
+                                                .getSingleResult();
+                if(family_users_count > 0){
+                    List<User> family_users = em.createNamedQuery("getMyFamilyUsers", User.class)
+                                                    .setParameter("login_user", login_user)
+                                                    .getResultList();
+                    request.setAttribute("family_users", family_users);
+                }
         }
-
-
 
         em.close();
 

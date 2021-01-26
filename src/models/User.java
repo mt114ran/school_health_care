@@ -61,6 +61,14 @@ import javax.persistence.Table;
         name = "getParentCount",
         query = "SELECT COUNT(u) FROM User AS u Where u.acc_inf = 2"
     ),
+    @NamedQuery(
+        name = "getMyFamilyUsers",
+        query = "SELECT u FROM User AS u Where u.id in (SELECT f.student.id FROM Family As f WHERE f.parent = :login_user)"
+    ),
+    @NamedQuery(
+        name = "getMyFamilyUsersCount",
+        query = "SELECT COUNT(u) FROM User AS u Where u.id in (SELECT f.student.id FROM Family As f WHERE f.parent = :login_user)"
+    ),
 })
 @Entity
 public class User {
