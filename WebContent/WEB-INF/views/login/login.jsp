@@ -14,16 +14,16 @@
         </c:if>
         <h2>ログイン</h2>
         <form method="POST" action="<c:url value='/login' />">
-            <label for="code">ユーザー番号</label><br />
+            <label for="code">User Code</label><br />
             <input type="text" name="code" value="${code}" />
             <br /><br />
 
-            <label for="password">パスワード</label><br />
+            <label for="password">Password</label><br />
             <input type="password" name="password" />
             <br /><br />
 
             <input type="hidden" name="_token" value="${_token}" />
-            <button type="submit">ログイン</button>
+            <button type="submit" class="btn login">ログイン</button>
         </form>
     </c:param>
 </c:import>

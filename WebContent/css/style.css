@@ -39,7 +39,6 @@ p {
 
 a {
     text-decoration: none;
-    color: #24738e;
 }
 
 table, tr, th, td {
@@ -213,6 +212,59 @@ h3 {
   color         : rgba(255, 153, 153, 0.84);     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
 }
+
+.btn{
+    width: 150px;
+    height: 30px;
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    border: 1px solid black;
+    font-weight: 600;
+    padding: 3px 0px;
+    margin: 10px auto;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: black;
+    text-decoration: none !important;
+}
+
+.btn.login{
+    box-shadow: 2px 2px 0 0 black;
+    border-radius: 7px;
+}
+
+.btn.login:hover {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.btn.create{
+    box-shadow: 2px 2px 0 0 black;
+    border-radius: 7px;
+}
+
+.btn.create:hover {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.btn.delete{
+    background-color:#ffb0b0;
+    box-shadow: 2px 2px 0 0 black;
+    border-radius: 7px;
+}
+
+.btn.delete:hover {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+
+
+
+
+
 
 
 
