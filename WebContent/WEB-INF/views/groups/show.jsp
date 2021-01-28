@@ -20,13 +20,13 @@
                         <tr>
                             <th>登録日時</th>
                             <td>
-                                <fmt:formatDate value="${group.created_at}" pattern="yyyy-MM-dd HH:mm:ss" />
+                                <fmt:formatDate value="${group.created_at}" pattern="yyyy年 M月 d日（E） HH:mm:ss" />
                             </td>
                         </tr>
                         <tr>
                             <th>更新日時</th>
                             <td>
-                                <fmt:formatDate value="${group.updated_at}" pattern="yyyy-MM-dd HH:mm:ss" />
+                                <fmt:formatDate value="${group.updated_at}" pattern="yyyy年 M月 d日（E） HH:mm:ss" />
                             </td>
                         </tr>
                     </tbody>

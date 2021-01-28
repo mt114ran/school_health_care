@@ -23,7 +23,7 @@
                     <tr class="row${status.count % 2}">
                         <td class="message_id"><c:out value="${message.id}" /></td>
                         <td class="user_name"><c:out value="${message.user.name}" /></td>
-                        <td class="message_date"><fmt:formatDate value='${message.message_date}' pattern='yyyy-MM-dd' /></td>
+                        <td class="message_date"><fmt:formatDate value='${message.message_date}' pattern='yyyy年 M月 d日（E）' /></td>
                         <td class="message_group"><c:out value="${message.group.group_name}" /></td>
                         <td class="message_comment">${message.title}</td>
                         <td class="action"><a href="<c:url value='/messages/show?id=${message.id}' />">詳細を見る</a></td>

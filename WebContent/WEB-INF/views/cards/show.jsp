@@ -15,7 +15,7 @@
                         </tr>
                         <tr>
                             <th>日付</th>
-                            <td><fmt:formatDate value="${card.card_date}" pattern="yyyy-MM-dd" /></td>
+                            <td><fmt:formatDate value="${card.card_date}" pattern="yyyy年 M月 d日（E）" /></td>
                         </tr>
                         <tr>
                             <th>検温結果</th>
@@ -45,13 +45,13 @@
                         <tr>
                             <th>登録日時</th>
                             <td>
-                                <fmt:formatDate value="${card.created_at}" pattern="yyyy-MM-dd HH:mm:ss" />
+                                <fmt:formatDate value="${card.created_at}" pattern="yyyy年 M月 d日（E） HH:mm:ss" />
                             </td>
                         </tr>
                         <tr>
                             <th>更新日時</th>
                             <td>
-                                <fmt:formatDate value="${card.updated_at}" pattern="yyyy-MM-dd HH:mm:ss" />
+                                <fmt:formatDate value="${card.updated_at}" pattern="yyyy年 M月 d日（E） HH:mm:ss" />
                             </td>
                         </tr>
                     </tbody>

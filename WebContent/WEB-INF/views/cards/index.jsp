@@ -21,7 +21,7 @@
                 <c:forEach var="card" items="${cards}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="user_name"><c:out value="${card.user.name}" /></td>
-                        <td class="card_date"><fmt:formatDate value='${card.card_date}' pattern='yyyy-MM-dd' /></td>
+                        <td class="card_date"><fmt:formatDate value='${card.card_date}' pattern='yyyy年 M月 d日（E）' /></td>
                         <c:choose>
                             <c:when test="${card.temperature >= 38}">
                                 <td class="high_fever_temperature">${card.temperature}</td>

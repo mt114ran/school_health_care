@@ -28,7 +28,7 @@
                             </tr>
                             <c:forEach var="message" items="${messages}" varStatus="status">
                                 <tr class="row${status.count % 2}">
-                                    <td class="message_date"><fmt:formatDate value='${message.message_date}' pattern='yyyy-MM-dd' /></td>
+                                    <td class="message_date"><fmt:formatDate value='${message.message_date}' pattern='yyyy年 M月 d日（E）' /></td>
                                     <td class="message_group"><c:out value="${message.group.group_name}" /></td>
                                     <td class="user_name"><c:out value="${message.user.name}" /></td>
                                     <td class="message_title">${message.title}</td>
@@ -57,7 +57,7 @@
                 <c:forEach var="card" items="${cards}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="user_name"><c:out value="${card.user.name}" /></td>
-                        <td class="card_date"><fmt:formatDate value='${card.card_date}' pattern='yyyy-MM-dd' /></td>
+                        <td class="card_date"><fmt:formatDate value='${card.card_date}' pattern='yyyy年 M月 d日（E）' /></td>
 
                         <c:choose>
                             <c:when test="${card.temperature >= 38}">
