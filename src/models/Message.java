@@ -35,7 +35,7 @@ import javax.persistence.Table;
     ),
     @NamedQuery(
         name = "getMyGroupMessages",
-        query = "SELECT m FROM Message AS m WHERE m.group.id in (SELECT gm.group.id FROM GroupMember As gm WHERE gm.user = :user) "
+        query = "SELECT m FROM Message AS m WHERE m.group.id in (SELECT gm.group.id FROM GroupMember As gm WHERE gm.user = :user) ORDER BY m.message_date DESC"
     ),
     @NamedQuery(
         name = "getMyGroupMessagesCount",
@@ -43,7 +43,7 @@ import javax.persistence.Table;
     ),
     @NamedQuery(
         name = "getMyFamilyGroupMessages",
-        query = "SELECT m FROM Message AS m WHERE m.group.id in (SELECT gm.group.id FROM GroupMember As gm WHERE gm.user in (SELECT f.student FROM Family As f WHERE f.parent = :login_user)) "
+        query = "SELECT m FROM Message AS m WHERE m.group.id in (SELECT gm.group.id FROM GroupMember As gm WHERE gm.user in (SELECT f.student FROM Family As f WHERE f.parent = :login_user))ORDER BY m.message_date DESC "
     ),
     @NamedQuery(
         name = "getMyFamilyGroupMessagesCount",
